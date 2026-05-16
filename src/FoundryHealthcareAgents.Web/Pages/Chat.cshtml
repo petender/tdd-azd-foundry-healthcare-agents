@@ -1,0 +1,45 @@
+@page
+@model FoundryHealthcareAgents.Web.Pages.ChatModel
+@{
+    ViewData["Title"] = Model.Agent?.Name ?? "Chat";
+}
+
+<div class="chat-container">
+    <div class="chat-header">
+        <a href="/" class="back-link">← Back</a>
+        <div class="chat-agent-info">
+            <span class="agent-icon-large">@Model.Agent?.Icon</span>
+            <div>
+                <h2>@Model.Agent?.Name</h2>
+                <p>@Model.Agent?.Description</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+        <div class="message assistant">
+            <div class="message-content">
+                Hello! I'm the @Model.Agent?.Name. How can I help you today?
+            </div>
+        </div>
+    </div>
+
+    <form id="chatForm" class="chat-input-form">
+        <input type="hidden" id="agentId" value="@Model.AgentId" />
+        <textarea id="userInput" placeholder="Type your message..." rows="2" autofocus></textarea>
+        <button type="submit" id="sendBtn">Send</button>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/js/chat.js"></script>
+    @if (!string.IsNullOrEmpty(Model.InitialMessage))
+    {
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('userInput').value = '@Html.Raw(Model.InitialMessage.Replace("'", "\\'"))';
+                document.getElementById('chatForm').dispatchEvent(new Event('submit'));
+            });
+        </script>
+    }
+}

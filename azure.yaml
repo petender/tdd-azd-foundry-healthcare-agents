@@ -1,0 +1,11 @@
+name: tdd-azd-foundry-healthcare-agents
+metadata:
+  template: tddazd-foundry-healthcare-agents@1.0.0
+infra:
+  provider: bicep
+  path: ./infra
+services:
+  web:
+    project: ./src/FoundryHealthcareAgents.Web
+    host: appservice
+    language: csharp

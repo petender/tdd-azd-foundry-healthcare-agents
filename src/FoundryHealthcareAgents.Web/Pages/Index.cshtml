@@ -1,0 +1,44 @@
+@page
+@model FoundryHealthcareAgents.Web.Pages.IndexModel
+@{
+    ViewData["Title"] = "Healthcare AI Agents";
+}
+
+<div class="hero-section">
+    <h1>🏥 Contoso Healthcare AI Agents</h1>
+    <p class="lead">Powered by Azure AI Foundry &amp; GPT-4o</p>
+    @if (!Model.IsConfigured)
+    {
+        <div class="alert alert-warning">
+            <strong>⚠️ Not Connected:</strong> Azure OpenAI endpoint is not configured. 
+            Set <code>AZURE_OPENAI_ENDPOINT</code> to enable AI chat.
+        </div>
+    }
+</div>
+
+<section class="agents-grid">
+    <h2>Choose an Agent</h2>
+    <div class="grid">
+        @foreach (var agent in Model.Agents)
+        {
+            <a href="/Chat?agentId=@agent.Id" class="agent-card">
+                <span class="agent-icon">@agent.Icon</span>
+                <h3>@agent.Name</h3>
+                <p>@agent.Description</p>
+            </a>
+        }
+    </div>
+</section>
+
+<section class="scenarios-section">
+    <h2>Sample Scenarios</h2>
+    <div class="scenarios-list">
+        @foreach (var scenario in Model.Scenarios)
+        {
+            <a href="/Chat?agentId=@scenario.AgentId&message=@Uri.EscapeDataString(scenario.SampleUserMessage)" class="scenario-item">
+                <strong>@scenario.Title</strong>
+                <span class="scenario-agent">@Model.Agents.FirstOrDefault(a => a.Id == scenario.AgentId)?.Icon @Model.Agents.FirstOrDefault(a => a.Id == scenario.AgentId)?.Name</span>
+            </a>
+        }
+    </div>
+</section>

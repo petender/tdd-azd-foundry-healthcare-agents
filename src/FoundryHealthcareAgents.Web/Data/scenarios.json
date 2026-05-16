@@ -1,0 +1,38 @@
+[
+  {
+    "Id": "scenario-1",
+    "Title": "Persistent headache with vision changes",
+    "AgentId": "triage",
+    "SampleUserMessage": "I've been having a persistent headache for three days now, and I noticed some blurry vision this morning. Should I be worried?"
+  },
+  {
+    "Id": "scenario-2",
+    "Title": "Schedule a cardiology follow-up",
+    "AgentId": "scheduler",
+    "SampleUserMessage": "I need to schedule a follow-up appointment with cardiology. My last visit was 6 months ago and Dr. Patel asked me to come back."
+  },
+  {
+    "Id": "scenario-3",
+    "Title": "Metformin and alcohol interaction",
+    "AgentId": "medication",
+    "SampleUserMessage": "I was recently prescribed Metformin for type 2 diabetes. Is it safe to have a glass of wine with dinner?"
+  },
+  {
+    "Id": "scenario-4",
+    "Title": "Recommended cancer screenings by age",
+    "AgentId": "faq",
+    "SampleUserMessage": "I'm 45 years old. What cancer screenings should I be getting at my age?"
+  },
+  {
+    "Id": "scenario-5",
+    "Title": "Child with high fever",
+    "AgentId": "triage",
+    "SampleUserMessage": "My 3-year-old has a fever of 103°F that started last night. She's irritable but drinking fluids. What should I do?"
+  },
+  {
+    "Id": "scenario-6",
+    "Title": "Reschedule dermatology appointment",
+    "AgentId": "scheduler",
+    "SampleUserMessage": "I need to reschedule my dermatology appointment from this Thursday to sometime next week. Afternoons work best for me."
+  }
+]

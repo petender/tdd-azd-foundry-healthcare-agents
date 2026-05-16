@@ -1,0 +1,8 @@
+.azure/
+**/bin/
+**/obj/
+**/publish/
+.env
+applogs/
+*.zip
+*.user

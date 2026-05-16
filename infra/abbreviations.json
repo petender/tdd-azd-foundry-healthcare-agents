@@ -1,0 +1,13 @@
+{
+  "ai-hub": "hub",
+  "ai-project": "proj",
+  "app-insights": "appi",
+  "app-service": "app",
+  "app-service-plan": "asp",
+  "cognitive-services": "oai",
+  "key-vault": "kv",
+  "log-analytics": "log",
+  "resource-group": "rg",
+  "search-service": "srch",
+  "storage-account": "st"
+}
