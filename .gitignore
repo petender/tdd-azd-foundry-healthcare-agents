@@ -19,4 +19,7 @@ Thumbs.db
 node_modules/
 package-lock.json
 capture-screenshots.js
+capture-portal-screenshots.js
+portal-login.js
 package.json
+.auth/
