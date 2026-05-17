@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FoundryHealthcareAgents.Web.Pages;
 
-public class ChatModel(IAgentService agentService) : PageModel
+[IgnoreAntiforgeryToken]
+public class ChatModel(IAgentService agentService, ILogger<ChatModel> logger) : PageModel
 {
     public AgentProfile? Agent { get; private set; }
     public string AgentId { get; private set; } = string.Empty;
@@ -25,12 +26,20 @@ public class ChatModel(IAgentService agentService) : PageModel
 
     public async Task<IActionResult> OnPostAsync([FromBody] ChatRequest request)
     {
-        var response = await agentService.ChatAsync(
-            request.AgentId,
-            request.Messages,
-            HttpContext.RequestAborted);
+        try
+        {
+            var response = await agentService.ChatAsync(
+                request.AgentId,
+                request.Messages,
+                HttpContext.RequestAborted);
 
-        return new JsonResult(new { reply = response });
+            return new JsonResult(new { reply = response });
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Chat request failed for agent {AgentId}", request.AgentId);
+            return new JsonResult(new { reply = $"⚠️ Error: {ex.Message}" });
+        }
     }
 }
 

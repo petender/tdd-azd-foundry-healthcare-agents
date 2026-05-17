@@ -1,8 +1,17 @@
-.azure/
-**/bin/
-**/obj/
-**/publish/
-.env
-applogs/
-*.zip
+## .NET
+bin/
+obj/
 *.user
+*.suo
+.vs/
+
+## azd
+.azure/
+
+## IDE
+.idea/
+*.swp
+
+## OS
+.DS_Store
+Thumbs.db
